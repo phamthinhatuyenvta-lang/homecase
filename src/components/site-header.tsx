@@ -9,7 +9,7 @@ const navigation = [
   { label: "Sản phẩm", href: "/san-pham" },
   { label: "Blog", href: "/blog" },
   { label: "Giới thiệu", href: "/#gioi-thieu" },
-  { label: "Liên hệ", href: "/#lien-he" },
+  { label: "Liên hệ", href: "/lien-he" },
 ];
 
 export default function SiteHeader() {
