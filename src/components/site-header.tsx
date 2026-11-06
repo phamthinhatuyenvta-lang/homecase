@@ -7,7 +7,7 @@ import { useState } from "react";
 const navigation = [
   { label: "Trang chủ", href: "/" },
   { label: "Sản phẩm", href: "/san-pham" },
-  { label: "Blog", href: "/#blog" },
+  { label: "Blog", href: "/blog" },
   { label: "Giới thiệu", href: "/#gioi-thieu" },
   { label: "Liên hệ", href: "/#lien-he" },
 ];

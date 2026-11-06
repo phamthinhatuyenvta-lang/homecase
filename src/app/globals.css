@@ -135,3 +135,43 @@ a {
     transition-duration: 0.01ms !important;
   }
 }
+
+.article-content > p + p,
+.article-content section > p + p {
+  margin-top: 1rem;
+}
+
+.article-content h2 {
+  margin-top: 0;
+  font-size: clamp(1.75rem, 4vw, 2.25rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.035em;
+  color: #163146;
+}
+
+.article-content h3 {
+  margin-top: 1.75rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.4;
+  color: #163146;
+}
+
+.article-content aside h2 {
+  color: inherit;
+}
+
+.article-content section > p,
+.article-content section li {
+  color: #526a7a;
+  line-height: 1.85;
+}
+
+.article-content ul {
+  margin-top: 1.25rem;
+  display: grid;
+  gap: 0.65rem;
+  padding-left: 1.35rem;
+  list-style: disc;
+}

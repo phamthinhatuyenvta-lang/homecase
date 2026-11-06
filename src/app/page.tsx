@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import SiteHeader from "@/components/site-header";
 import { featuredProducts, formatPrice } from "@/data/products";
+import { posts } from "@/data/posts";
 
 const benefits = [
   {
@@ -19,12 +20,6 @@ const benefits = [
     title: "Sinh ra để đi học",
     description: "Không gian rộng rãi cho giáo trình, bình nước và những món đồ hằng ngày.",
   },
-];
-
-const posts = [
-  { tag: "Tote guide", title: "Cách chọn túi tote phù hợp cho sinh viên", read: "5 phút đọc" },
-  { tag: "Daily style", title: "5 cách phối đồ với túi tote xanh", read: "4 phút đọc" },
-  { tag: "Tote care", title: "Giặt và bảo quản túi cotton đúng cách", read: "3 phút đọc" },
 ];
 
 export default function Home() {
@@ -59,7 +54,7 @@ export default function Home() {
             </p>
             <div className="mt-6 flex flex-col gap-3 sm:flex-row lg:flex-col xl:flex-row">
               <Link className="button-primary" href="/san-pham">Khám phá bộ sưu tập</Link>
-              <Link className="button-secondary" href="#blog">Đọc blog</Link>
+              <Link className="button-secondary" href="/blog">Đọc blog</Link>
             </div>
           </div>
         </div>
@@ -141,18 +136,20 @@ export default function Home() {
           <div className="grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:gap-16">
             <div>
               <p className="text-xs font-black uppercase tracking-[0.22em] text-[#8fd0ff]">Homecase journal</p>
-              <h2 className="mt-4 text-4xl font-black leading-tight tracking-[-0.04em] sm:text-5xl">Mặc đẹp hơn. Dùng tote lâu hơn.</h2>
+              <Link href="/blog" className="block rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8fd0ff]">
+                <h2 className="mt-4 text-4xl font-black leading-tight tracking-[-0.04em] transition-colors hover:text-[#8fd0ff] sm:text-5xl">Mặc đẹp hơn. Dùng tote lâu hơn.</h2>
+              </Link>
               <p className="mt-5 max-w-md leading-7 text-white/70">Góc nhỏ chia sẻ cách chọn, phối và chăm sóc chiếc túi đồng hành cùng bạn mỗi ngày.</p>
             </div>
             <div className="divide-y divide-white/15 border-y border-white/15">
               {posts.map((post, index) => (
-                <Link key={post.title} href="#lien-he" className="group grid min-h-28 grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg px-1 py-5 transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8fd0ff] sm:gap-7 sm:px-4">
+                <Link key={post.title} href={`/blog/${post.slug}`} className="group grid min-h-28 grid-cols-[auto_1fr_auto] items-center gap-4 rounded-lg px-1 py-5 transition-colors hover:bg-white/5 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#8fd0ff] sm:gap-7 sm:px-4">
                   <span className="text-xs font-black text-[#8fd0ff]">0{index + 1}</span>
                   <span>
-                    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-white/50">{post.tag}</span>
+                    <span className="block text-xs font-bold uppercase tracking-[0.18em] text-white/50">{post.category}</span>
                     <span className="mt-2 block text-lg font-black tracking-[-0.02em] sm:text-xl">{post.title}</span>
                   </span>
-                  <span className="hidden text-sm text-white/55 sm:block">{post.read} <span className="ml-3 inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></span>
+                  <span className="hidden text-sm text-white/55 sm:block">{post.readingTime} <span className="ml-3 inline-block transition-transform group-hover:translate-x-1" aria-hidden="true">→</span></span>
                 </Link>
               ))}
             </div>
