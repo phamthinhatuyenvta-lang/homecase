@@ -31,6 +31,7 @@ const texGyreAdventor = localFont({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://homecase.vercel.app"),
   title: "Homecase | Trendy Totes, Daily Vibes",
   description:
     "Túi tote cotton trẻ trung dành cho Gen Z và sinh viên tại Đà Nẵng.",

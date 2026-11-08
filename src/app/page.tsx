@@ -3,7 +3,7 @@ import Link from "next/link";
 import SiteHeader from "@/components/site-header";
 import { featuredProducts, formatPrice } from "@/data/products";
 import { posts } from "@/data/posts";
-
+import SiteFooter from "@/components/site-footer";
 const benefits = [
   {
     number: "01",
@@ -73,14 +73,14 @@ export default function Home() {
           <div className="grid gap-6 md:grid-cols-3">
             {featuredProducts.map((product, index) => (
               <article key={product.name} className="group rounded-[28px] border border-[#3c9dea]/15 bg-[#fff9f2] p-4 transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_50px_rgba(60,157,234,0.14)]">
-                <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-white">
+                <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] bg-[#fff9f2]">
                   <span className="absolute left-4 top-4 z-10 rounded-full bg-white/90 px-3 py-1 text-xs font-black text-[#147bc8] shadow-sm">0{index + 1}</span>
                   <Image
                     src={product.image}
                     alt={product.alt}
                     fill
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                    className="object-contain p-5 transition duration-500 group-hover:scale-[1.04]"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center transition duration-500 group-hover:scale-[1.04]"
                   />
                 </div>
                 <div className="px-2 pb-2 pt-5">
@@ -103,7 +103,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-7xl gap-10 px-5 sm:px-8 lg:grid-cols-[0.85fr_1.15fr] lg:items-center lg:gap-16">
           <div className="relative mx-auto w-full max-w-lg overflow-hidden rounded-[32px] bg-[#dff1ff]">
             <Image
-              src="/images/tote-green-lifestyle.png"
+              src="/images/about-homecase.png"
               alt="Sinh viên trẻ đeo túi tote Homecase phối màu kem và xanh"
               width={1080}
               height={1350}
@@ -166,31 +166,7 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t border-[#3c9dea]/15 bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:px-8 lg:grid-cols-[1fr_1.5fr]">
-          <div>
-            <Image src="/images/logo-primary.png" alt="Logo Homecase Canvas Tote" width={1000} height={1000} className="h-16 w-auto object-contain object-left mix-blend-multiply" />
-            <p className="mt-4 max-w-sm text-sm leading-6 text-[#60717e]">Trendy Totes, Daily Vibes — túi tote cotton cho những ngày đầy cảm hứng.</p>
-          </div>
-          <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <h3 className="footer-title">Theo dõi</h3>
-              <p className="footer-copy">TikTok: homecasedana</p>
-              <p className="footer-copy">Instagram: homecasedana</p>
-            </div>
-            <div>
-              <h3 className="footer-title">Liên hệ</h3>
-              <a className="footer-link" href="tel:0763672210">076 367 2210</a>
-              <a className="footer-link" href="mailto:homecasedana@gmail.com">homecasedana@gmail.com</a>
-            </div>
-            <div>
-              <h3 className="footer-title">Ghé Homecase</h3>
-              <address className="footer-copy not-italic">71 Ngũ Hành Sơn,<br />Đà Nẵng</address>
-            </div>
-          </div>
-        </div>
-        <div className="border-t border-[#3c9dea]/10 px-5 py-5 text-center text-xs font-bold text-[#6d7d88]">© 2026 Homecase. Trendy Totes, Daily Vibes.</div>
-      </footer>
+      <SiteFooter />
     </main>
   );
 }
