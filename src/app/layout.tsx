@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import "./globals.css";
 
 const texGyreAdventor = localFont({
@@ -30,6 +31,9 @@ const texGyreAdventor = localFont({
   fallback: ["Arial", "Helvetica", "sans-serif"],
 });
 
+const googleAnalyticsId =
+  process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_ID;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://homecase.vercel.app"),
   title: "Homecase | Trendy Totes, Daily Vibes",
@@ -47,6 +51,10 @@ export default function RootLayout({
   return (
     <html lang="vi">
       <body className={texGyreAdventor.className}>{children}</body>
+
+      {googleAnalyticsId && (
+        <GoogleAnalytics gaId={googleAnalyticsId} />
+      )}
     </html>
   );
 }
