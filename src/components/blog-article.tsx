@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import type { BlogPost, Section } from "@/data/blog/cach-chon-tui-tote";
-
+import TrackedLink from "@/components/tracked-link";
 const HOTLINE_DISPLAY = "076 367 2210";
 const HOTLINE_TEL = "tel:0763672210";
 
@@ -36,12 +36,17 @@ function CtaBlock({ variant }: { variant: "mid" | "end" }) {
   {text}
 </p>
       <div className="mt-5 flex flex-col gap-3 sm:flex-row">
-        <Link
+        <TrackedLink
   href="/san-pham"
+  eventName="select_product"
+  eventParams={{
+    link_location: `blog_cta_${variant}`,
+    destination: "/san-pham",
+  }}
   className="inline-flex w-full items-center justify-center rounded-full bg-[#3c9dea] px-6 py-3 text-sm font-bold text-white transition hover:bg-[#147bc8] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#147bc8] sm:w-auto"
 >
   Khám phá bộ sưu tập túi tote Homecase
-</Link>
+</TrackedLink>
         <Link
   href="/lien-he"
   className="inline-flex w-full items-center justify-center rounded-full border border-[#3c9dea] bg-white px-6 py-3 text-sm font-bold text-[#147bc8] transition hover:bg-[#dff2ff] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#147bc8] sm:w-auto"
@@ -195,10 +200,16 @@ function SectionView({ section, index }: { section: Section; index: number }) {
         key={product.href}
         className="group overflow-hidden rounded-[22px] border border-[#3c9dea]/20 bg-white shadow-[0_12px_32px_rgba(60,157,234,0.08)] transition duration-300 hover:-translate-y-1 hover:shadow-[0_18px_42px_rgba(60,157,234,0.15)]"
       >
-        <Link
-          href={product.href}
-          className="block rounded-[22px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#147bc8]"
-        >
+        <TrackedLink
+  href={product.href}
+  eventName="select_product"
+  eventParams={{
+    product_name: product.name,
+    destination: product.href,
+    link_location: "blog_product_card",
+  }}
+  className="block rounded-[22px] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#147bc8]"
+>
           <div className="relative aspect-[4/5] overflow-hidden bg-[#fff9f2]">
             <Image
               src={product.image}
@@ -218,7 +229,7 @@ function SectionView({ section, index }: { section: Section; index: number }) {
               {product.price}
             </p>
           </div>
-        </Link>
+        </TrackedLink>
       </article>
     ))}
   </div>

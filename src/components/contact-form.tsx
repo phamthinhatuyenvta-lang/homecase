@@ -2,7 +2,7 @@
 
 import { FormEvent, useState } from "react";
 import { supabase } from "@/lib/supabase";
-
+import { sendGAEvent } from "@next/third-parties/google";
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
 export default function ContactForm() {
@@ -38,8 +38,13 @@ export default function ContactForm() {
       return;
     }
 
-    form.reset();
-    setStatus("success");
+    sendGAEvent("event", "generate_lead", {
+  form_name: "contact_form",
+  contact_topic: topic || "not_selected",
+});
+
+form.reset();
+setStatus("success");
   }
 
   return (

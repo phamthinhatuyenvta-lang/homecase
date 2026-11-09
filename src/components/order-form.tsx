@@ -1,5 +1,5 @@
 "use client";
-
+import { sendGAEvent } from "@next/third-parties/google";
 import type { FormEvent } from "react";
 import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
@@ -66,9 +66,15 @@ export default function OrderForm() {
       return;
     }
 
-    form.reset();
-    setSelectedProduct("");
-    setStatus("success");
+    sendGAEvent("event", "submit_order", {
+  form_name: "order_form",
+  product_slug: productSlug,
+  quantity,
+});
+
+form.reset();
+setSelectedProduct("");
+setStatus("success");
   }
 
   return (
